@@ -1,6 +1,6 @@
 # Compress Commons v0.0.1 [![Build Status](https://travis-ci.org/ctalkington/node-compress-commons.svg?branch=master)](https://travis-ci.org/ctalkington/node-compress-commons)
 
-description
+Compress Commons is a library that defines a common interface for working with archives within node.
 
 [![NPM](https://nodei.co/npm/compress-commons.png)](https://nodei.co/npm/compress-commons/)
 
