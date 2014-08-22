@@ -21,3 +21,5 @@ You can also use `npm install https://github.com/ctalkington/node-compress-commo
 ## Credits
 
 Concept inspired by [Apache Commons Compress](http://commons.apache.org/proper/commons-compress/)&trade;.
+
+Some logic derived from [Apache Commons Compress](http://commons.apache.org/proper/commons-compress/)&trade; and [OpenJDK 7](http://openjdk.java.net/).
