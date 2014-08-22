@@ -17,3 +17,7 @@ You can also use `npm install https://github.com/ctalkington/node-compress-commo
 - [Changelog](https://github.com/ctalkington/node-compress-commons/releases)
 - [Contributing](https://github.com/ctalkington/node-compress-commons/blob/master/CONTRIBUTING.md)
 - [MIT License](https://github.com/ctalkington/node-compress-commons/blob/master/LICENSE-MIT)
+
+## Credits
+
+Concept inspired by [Apache Commons Compress](http://commons.apache.org/proper/commons-compress/)&trade;.
