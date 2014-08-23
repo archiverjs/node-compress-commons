@@ -33,6 +33,8 @@
   },
   "dependencies": {
     "buffer-crc32": "~0.2.1",
+    "crc32-stream": "~0.2.0",
+    "deflate-crc32-stream": "~0.1.0",
     "readable-stream": "~1.0.26"
   },
   "devDependencies": {

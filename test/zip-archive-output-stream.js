@@ -3,12 +3,14 @@ var fs = require('fs');
 var assert = require('chai').assert;
 var mkdir = require('mkdirp');
 
+var helpers = require('./helpers');
+var WriteHashStream = helpers.WriteHashStream;
+var testBuffer = helpers.binaryBuffer(1024 * 16);
+var testDate = new Date('Jan 03 2013 14:26:38 GMT');
+
 var commons = require('../lib/compress-commons');
 var ZipArchiveEntry = commons.ZipArchiveEntry;
 var ZipArchiveOutputStream = commons.ZipArchiveOutputStream;
-
-var outputStream = new ZipArchiveOutputStream();
-var testDate = new Date('Jan 03 2013 14:26:38 GMT');
 
 describe('ZipArchiveOutputStream', function() {
 
@@ -17,25 +19,63 @@ describe('ZipArchiveOutputStream', function() {
   });
 
   describe('#entry', function() {
-    var fsOut = fs.createWriteStream('tmp/put.zip');
+    it('should append Buffer sources', function(done) {
+      var archive = new ZipArchiveOutputStream();
+      var testStream = new WriteHashStream('tmp/zip-buffer.zip');
+      var entry = new ZipArchiveEntry('buffer.txt');
 
-    fsOut.on('close', function() {
-      console.log(outputStream._entries);
-      console.log(outputStream._archive);
+      testStream.on('close', function() {
+        done();
+      });
+
+      archive.pipe(testStream);
+
+      archive.entry(entry, testBuffer).finish();
     });
 
-    outputStream.pipe(fsOut);
+    it('should append Stream sources', function(done) {
+      var archive = new ZipArchiveOutputStream();
+      var testStream = new WriteHashStream('tmp/zip-stream.zip');
+      var entry = new ZipArchiveEntry('stream.txt');
 
-    var zae = new ZipArchiveEntry('file.txt');
-    zae.setMethod(0);
-    zae.setUnixMode(0777);
+      testStream.on('close', function() {
+        done();
+      });
 
-    outputStream.entry(zae, 'abc123', function(err) {
-      if (err) {
-        throw err;
-      }
+      archive.pipe(testStream);
 
-      outputStream.finish();
+      archive.entry(entry, fs.createReadStream('test/fixtures/test.txt')).finish();
+    });
+
+    it('should append multiple sources', function(done) {
+      var archive = new ZipArchiveOutputStream();
+      var testStream = new WriteHashStream('tmp/zip-multiple.zip');
+
+      var entry = new ZipArchiveEntry('string.txt');
+      var entry2 = new ZipArchiveEntry('buffer.txt');
+      var entry3 = new ZipArchiveEntry('stream.txt');
+      var entry4 = new ZipArchiveEntry('stream-store.txt');
+      entry4.setMethod(0);
+
+      testStream.on('close', function() {
+        done();
+      });
+
+      archive.pipe(testStream);
+
+      archive.entry(entry, 'string', function(err) {
+        if (err) throw err;
+        archive.entry(entry2, testBuffer, function(err) {
+          if (err) throw err;
+          archive.entry(entry3, fs.createReadStream('test/fixtures/test.txt'), function(err) {
+            if (err) throw err;
+            archive.entry(entry4, fs.createReadStream('test/fixtures/image.png'), function(err) {
+              if (err) throw err;
+              archive.finish();
+            });
+          });
+        });
+      });
     });
   });
 
