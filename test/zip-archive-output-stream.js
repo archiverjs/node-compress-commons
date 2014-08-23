@@ -19,21 +19,23 @@ describe('ZipArchiveOutputStream', function() {
   describe('#entry', function() {
     var fsOut = fs.createWriteStream('tmp/put.zip');
 
+    fsOut.on('close', function() {
+      console.log(outputStream._entries);
+      console.log(outputStream._archive);
+    });
+
     outputStream.pipe(fsOut);
 
     var zae = new ZipArchiveEntry('file.txt');
     zae.setMethod(0);
+    zae.setUnixMode(0777);
 
     outputStream.entry(zae, 'abc123', function(err) {
       if (err) {
         throw err;
       }
 
-      console.log(outputStream._archive);
-      console.log(outputStream._entry);
       outputStream.finish();
-
-      // console.log(outputStream._entries);
     });
   });
 

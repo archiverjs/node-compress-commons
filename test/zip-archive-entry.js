@@ -15,6 +15,12 @@ describe('ZipArchiveEntry', function() {
   });
 
   // Getters
+  describe('#getCentralDirectoryExtra', function() {
+    it.skip('should be tested', function() {
+
+    });
+  });
+
   describe('#getComment', function() {
     it('should return the comment', function() {
       entry.setComment('file comment');
@@ -43,6 +49,12 @@ describe('ZipArchiveEntry', function() {
     });
   });
 
+  describe('#getExtra', function() {
+    it.skip('should be tested', function() {
+
+    });
+  });
+
   describe('#getGeneralPurposeBit', function() {
     it('should return the general purpose bit flag', function() {
       var gpb = new GeneralPurposeBit();
@@ -56,6 +68,18 @@ describe('ZipArchiveEntry', function() {
     it('should return the internal attributes', function() {
       entry.inattr = 2180972576;
       assert.equal(entry.getInternalAttributes(), 2180972576);
+    });
+  });
+
+  describe('#getLastModifiedDate', function() {
+    it.skip('should be tested', function() {
+
+    });
+  });
+
+  describe('#getLocalFileDataExtra', function() {
+    it.skip('should be tested', function() {
+
     });
   });
 
@@ -105,6 +129,12 @@ describe('ZipArchiveEntry', function() {
     });
   });
 
+  describe('#getVersionNeededToExtract', function() {
+    it.skip('should be tested', function() {
+
+    });
+  });
+
   // Setters
   describe('#setComment', function() {
     it('should set internal variable', function() {
@@ -131,6 +161,12 @@ describe('ZipArchiveEntry', function() {
     it('should set internal variable', function() {
       entry.setExternalAttributes(2180972576);
       assert.propertyVal(entry, 'exattr', 2180972576);
+    });
+  });
+
+  describe('#setExtra', function() {
+    it.skip('should be tested', function() {
+
     });
   });
 
@@ -195,6 +231,12 @@ describe('ZipArchiveEntry', function() {
       entry.setUnixMode(0777);
       assert.propertyVal(entry, 'mode', 0777);
       assert.propertyVal(entry, 'exattr', 33488896);
+    });
+  });
+
+  describe('#setVersionNeededToExtract', function() {
+    it.skip('should be tested', function() {
+
     });
   });
 
