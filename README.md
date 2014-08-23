@@ -1,4 +1,4 @@
-# Compress Commons v0.0.1 [![Build Status](https://travis-ci.org/ctalkington/node-compress-commons.svg?branch=master)](https://travis-ci.org/ctalkington/node-compress-commons)
+# Compress Commons v0.1.0 [![Build Status](https://travis-ci.org/ctalkington/node-compress-commons.svg?branch=master)](https://travis-ci.org/ctalkington/node-compress-commons)
 
 Compress Commons is a library that defines a common interface for working with archives within node.
 
