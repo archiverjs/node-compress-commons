@@ -1,7 +1,9 @@
 /*global before,describe,it */
 var assert = require('chai').assert;
+
 var commons = require('../lib/compress-commons');
 var ZipArchiveEntry = commons.ZipArchiveEntry;
+var GeneralPurposeBit = require('../lib/archivers/zip/general-purpose-bit');
 
 var entry;
 var testDate = new Date('Jan 03 2013 14:26:38 GMT');
@@ -22,77 +24,82 @@ describe('ZipArchiveEntry', function() {
 
   describe('#getCompressedSize', function() {
     it('should return the compressed size', function() {
-      entry.setCompressedSize(10);
+      entry.csize = 10;
       assert.equal(entry.getCompressedSize(), 10);
     });
   });
 
   describe('#getCrc', function() {
     it('should return the CRC32', function() {
-      entry.setCrc(585446183);
+      entry.crc = 585446183;
       assert.equal(entry.getCrc(), 585446183);
     });
   });
 
   describe('#getExternalAttributes', function() {
     it('should return the external attributes', function() {
-      entry.setExternalAttributes(2180972576);
+      entry.exattr = 2180972576;
       assert.equal(entry.getExternalAttributes(), 2180972576);
     });
   });
 
   describe('#getGeneralPurposeBit', function() {
     it('should return the general purpose bit flag', function() {
-      entry.setGeneralPurposeBit(2056);
-      assert.equal(entry.getGeneralPurposeBit(), 2056);
+      var gpb = new GeneralPurposeBit();
+      gpb.useDataDescriptor(true);
+      entry.gpb = gpb;
+      assert.equal(entry.getGeneralPurposeBit(), gpb);
     });
   });
 
   describe('#getInternalAttributes', function() {
     it('should return the internal attributes', function() {
-      entry.setInternalAttributes(2180972576);
+      entry.inattr = 2180972576;
       assert.equal(entry.getInternalAttributes(), 2180972576);
     });
   });
 
   describe('#getMethod', function() {
     it('should return the compression method', function() {
-      entry.setMethod(0);
+      entry.method = 0;
       assert.equal(entry.getMethod(), 0);
     });
   });
 
   describe('#getName', function() {
     it('should return the name', function() {
-      entry.setName('file.txt');
+      entry.name = 'file.txt';
       assert.equal(entry.getName(), 'file.txt');
     });
   });
 
   describe('#getPlatform', function() {
     it('should return the platform', function() {
-      entry.setPlatform(3);
+      entry.platform = 3;
       assert.equal(entry.getPlatform(), 3);
     });
   });
 
   describe('#getSize', function() {
     it('should return the size', function() {
-      entry.setSize(25);
+      entry.size = 25;
       assert.equal(entry.getSize(), 25);
     });
   });
 
   describe('#getTime', function() {
     it('should return a Date object', function() {
-      entry.setTime(testDate);
+      entry.time = 1109607251;
       assert.typeOf(entry.getTime(), 'Date');
-      assert.deepEqual(entry.getTime(), testDate);
     });
+
+    // add test for raw
   });
 
   describe('#getUnixMode', function() {
     it('should return the unix filemode', function() {
+      entry.mode = 0777;
+      entry.extattr = 33488896;
       entry.setUnixMode(0777);
       assert.equal(entry.getUnixMode(), 0777);
     });
@@ -129,8 +136,10 @@ describe('ZipArchiveEntry', function() {
 
   describe('#setGeneralPurposeBit', function() {
     it('should set internal variable', function() {
-      entry.setGeneralPurposeBit(2056);
-      assert.propertyVal(entry, 'flag', 2056);
+      var gpb = new GeneralPurposeBit();
+      gpb.useDataDescriptor(true);
+      entry.setGeneralPurposeBit(gpb);
+      assert.propertyVal(entry, 'gpb', gpb);
     });
   });
 
