@@ -4,8 +4,7 @@ var commons = require('../lib/compress-commons');
 
 describe('commons', function() {
 
-  it.skip('will do something some day', function(){
-
-  });
+  // it('will do something some day', function(){
+  // });
 
 });
