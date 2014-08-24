@@ -116,8 +116,13 @@ describe('ZipArchiveEntry', function() {
       entry.time = 1109607251;
       assert.typeOf(entry.getTime(), 'Date');
     });
+  });
 
-    // add test for raw
+  describe('#getTimeDos', function() {
+    it('should return a number', function() {
+      entry.time = 1109607251;
+      assert.typeOf(entry.getTimeDos(), 'number');
+    });
   });
 
   describe('#getUnixMode', function() {
@@ -140,6 +145,11 @@ describe('ZipArchiveEntry', function() {
     it('should set internal variable', function() {
       entry.setComment('file comment');
       assert.propertyVal(entry, 'comment', 'file comment');
+    });
+
+    it('should set utf8 bit when receiving strings byte count != string length', function() {
+      entry.setComment('ÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝàáâãäçèéêëìíîïñòóôõöùúûüýÿ');
+      assert.ok(entry.getGeneralPurposeBit().usesUTF8ForNames());
     });
   });
 
@@ -202,6 +212,11 @@ describe('ZipArchiveEntry', function() {
     it('should trim windows style seperators', function() {
       entry.setName('\\windows\\file.txt');
       assert.propertyVal(entry, 'name', 'windows/file.txt');
+    });
+
+    it('should set utf8 bit when receiving strings byte count != string length', function() {
+      entry.setName('ÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝàáâãäçèéêëìíîïñòóôõöùúûüýÿ.txt');
+      assert.ok(entry.getGeneralPurposeBit().usesUTF8ForNames());
     });
   });
 
