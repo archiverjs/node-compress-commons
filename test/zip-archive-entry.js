@@ -128,8 +128,8 @@ describe('ZipArchiveEntry', function() {
   describe('#getUnixMode', function() {
     it('should return the unix filemode', function() {
       entry.mode = 0777;
-      entry.extattr = 33488896;
-      entry.setUnixMode(0777);
+      entry.exattr = 2180972576;
+      entry.platform = 3;
       assert.equal(entry.getUnixMode(), 0777);
     });
   });
@@ -244,8 +244,8 @@ describe('ZipArchiveEntry', function() {
   describe('#setUnixMode', function() {
     it('should set internal variables', function() {
       entry.setUnixMode(0777);
+      assert.propertyVal(entry, 'exattr', 2180972576);
       assert.propertyVal(entry, 'mode', 0777);
-      assert.propertyVal(entry, 'exattr', 33488896);
     });
   });
 
