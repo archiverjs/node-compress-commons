@@ -132,6 +132,17 @@ describe('ZipArchiveEntry', function() {
       entry.platform = 3;
       assert.equal(entry.getUnixMode(), 0777);
     });
+
+    it('should set proper external attributes for an unix directory', function () {
+      entry = new ZipArchiveEntry('directory/');
+      entry.setUnixMode(0777);
+
+      assert.ok(entry.getPlatform(), 3);
+      assert.ok(entry.isDirectory());
+
+      var exattr = entry.getExternalAttributes() >> 16;
+      assert.equal(exattr & 040000, 040000);
+    });
   });
 
   describe('#getVersionNeededToExtract', function() {
@@ -263,5 +274,4 @@ describe('ZipArchiveEntry', function() {
       assert.ok(entry.isDirectory());
     });
   });
-
 });
