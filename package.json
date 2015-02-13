@@ -1,6 +1,6 @@
 {
   "name": "compress-commons",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "a library that defines a common interface for working with archive formats within node",
   "homepage": "https://github.com/ctalkington/node-compress-commons",
   "author": {
