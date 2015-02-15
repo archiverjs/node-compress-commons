@@ -2,22 +2,22 @@
   "name": "compress-commons",
   "version": "0.2.6",
   "description": "a library that defines a common interface for working with archive formats within node",
-  "homepage": "https://github.com/ctalkington/node-compress-commons",
+  "homepage": "https://github.com/archiverjs/node-compress-commons",
   "author": {
     "name": "Chris Talkington",
     "url": "http://christalkington.com/"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ctalkington/node-compress-commons.git"
+    "url": "https://github.com/archiverjs/node-compress-commons.git"
   },
   "bugs": {
-    "url": "https://github.com/ctalkington/node-compress-commons/issues"
+    "url": "https://github.com/archiverjs/node-compress-commons/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/ctalkington/node-compress-commons/blob/master/LICENSE-MIT"
+      "url": "https://github.com/archiverjs/node-compress-commons/blob/master/LICENSE-MIT"
     }
   ],
   "main": "lib/compress-commons.js",

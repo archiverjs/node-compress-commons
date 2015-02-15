@@ -10,14 +10,14 @@ Compress Commons is a library that defines a common interface for working with a
 npm install compress-commons --save
 ```
 
-You can also use `npm install https://github.com/ctalkington/node-compress-commons/archive/master.tar.gz` to test upcoming versions.
+You can also use `npm install https://github.com/archiverjs/node-compress-commons/archive/master.tar.gz` to test upcoming versions.
 
 ## Things of Interest
 
 - [Source Docs (coming soon)](https://docsrc.com/compress-commons/)
-- [Changelog](https://github.com/ctalkington/node-compress-commons/releases)
-- [Contributing](https://github.com/ctalkington/node-compress-commons/blob/master/CONTRIBUTING.md)
-- [MIT License](https://github.com/ctalkington/node-compress-commons/blob/master/LICENSE-MIT)
+- [Changelog](https://github.com/archiverjs/node-compress-commons/releases)
+- [Contributing](https://github.com/archiverjs/node-compress-commons/blob/master/CONTRIBUTING.md)
+- [MIT License](https://github.com/archiverjs/node-compress-commons/blob/master/LICENSE-MIT)
 
 ## Credits
 
