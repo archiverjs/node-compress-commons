@@ -6,20 +6,6 @@ var Stream = require('stream').Stream;
 var Readable = require('readable-stream').Readable;
 var Writable = require('readable-stream').Writable;
 
-function adjustDateByOffset(d, offset) {
-  d = (d instanceof Date) ? d : new Date();
-
-  if (offset >= 1) {
-    d.setMinutes(d.getMinutes() - offset);
-  } else {
-    d.setMinutes(d.getMinutes() + Math.abs(offset));
-  }
-
-  return d;
-}
-
-module.exports.adjustDateByOffset = adjustDateByOffset;
-
 function binaryBuffer(n) {
   var buffer = new Buffer(n);
 
