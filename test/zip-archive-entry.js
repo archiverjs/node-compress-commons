@@ -220,9 +220,20 @@ describe('ZipArchiveEntry', function() {
       assert.propertyVal(entry, 'name', 'file.txt');
     });
 
-    it('should trim windows style seperators', function() {
+    it('should allow ./ at the beginning of path', function() {
+      entry.setName('./file.txt');
+      assert.propertyVal(entry, 'name', './file.txt');
+    });
+
+    it('should clean windows style paths', function() {
       entry.setName('\\windows\\file.txt');
       assert.propertyVal(entry, 'name', 'windows/file.txt');
+
+      entry.setName('c:\\this\\path\\file.txt');
+      assert.propertyVal(entry, 'name', 'this/path/file.txt');
+
+      entry.setName('\\\\server\\share\\');
+      assert.propertyVal(entry, 'name', 'server/share/');
     });
 
     it('should set utf8 bit when receiving strings byte count != string length', function() {
