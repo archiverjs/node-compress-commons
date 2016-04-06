@@ -53,14 +53,24 @@ describe('ZipArchiveOutputStream', function() {
       var testStream = new WriteHashStream('tmp/zip-stream.zip');
       var entry = new ZipArchiveEntry('stream.txt');
 
+      var callbackError = null;
+      var callbackCalls = 0;
+
       testStream.on('close', function() {
+        assert.equal(callbackError.message, 'something went wrong');
+        assert.equal(callbackCalls, 1);
         done();
       });
 
       archive.pipe(testStream);
 
       var file = new stream.Transform();
-      archive.entry(entry, file, function() {}).finish();
+      archive.entry(entry, file, function(err) {
+        callbackCalls += 1;
+        callbackError = err;
+      });
+      archive.finish();
+
       process.nextTick(function() {
         file.emit('error', new Error('something went wrong'));
       })
