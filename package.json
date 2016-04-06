@@ -1,6 +1,6 @@
 {
   "name": "compress-commons",
-  "version": "0.4.2",
+  "version": "1.0.0",
   "description": "a library that defines a common interface for working with archive formats within node",
   "homepage": "https://github.com/archiverjs/node-compress-commons",
   "author": {
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "buffer-crc32": "^0.2.1",
-    "crc32-stream": "^0.4.0",
+    "crc32-stream": "^1.0.0",
     "node-int64": "^0.4.0",
     "normalize-path": "^2.0.0",
     "readable-stream": "^2.0.0"
