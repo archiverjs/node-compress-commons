@@ -6,7 +6,8 @@ var ZipArchiveEntry = commons.ZipArchiveEntry;
 var GeneralPurposeBit = require('../lib/archivers/zip/general-purpose-bit');
 
 var entry;
-var testDate = new Date('Jan 03 2013 14:26:38 GMT');
+// Jan 03 2013 14:26:38 GMT
+var testDate = new Date(Date.UTC(2013, 0, 3, 14, 26, 38, 0));
 
 describe('ZipArchiveEntry', function() {
 
@@ -257,9 +258,9 @@ describe('ZipArchiveEntry', function() {
   });
 
   describe('#setTime', function() {
-    it.skip('should set internal variable', function() {
+    it('should set internal variable', function() {
       entry.setTime(testDate);
-      assert.propertyVal(entry, 'time', 1109607251);
+      assert.propertyVal(entry, 'time', 1109619539);
     });
   });
 

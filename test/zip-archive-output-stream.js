@@ -107,6 +107,22 @@ describe('ZipArchiveOutputStream', function() {
       });
     });
 
+    it('should force UTC', function(done) {
+      var archive = new ZipArchiveOutputStream({
+          forceUTC: true
+      });
+      var testStream = new WriteHashStream('tmp/zip-stream64.zip');
+      var entry = new ZipArchiveEntry('stream.txt');
+
+      testStream.on('close', function() {
+          done();
+      });
+
+      archive.pipe(testStream);
+
+      archive.entry(entry, fs.createReadStream('test/fixtures/test.txt')).finish();
+    });
+
     it('should force ZIP64', function(done) {
       var archive = new ZipArchiveOutputStream({
         forceZip64: true
