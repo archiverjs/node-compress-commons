@@ -131,7 +131,7 @@ describe('ZipArchiveEntry', function() {
       entry.mode = 0777;
       entry.exattr = 2180972576;
       entry.platform = 3;
-      assert.equal(entry.getUnixMode(), 0777);
+      assert.equal(entry.getUnixMode(), 0100777);
     });
 
     it('should set proper external attributes for an unix directory', function () {
@@ -269,6 +269,15 @@ describe('ZipArchiveEntry', function() {
       entry.setUnixMode(0777);
       assert.propertyVal(entry, 'exattr', 2180972576);
       assert.propertyVal(entry, 'mode', 0777);
+      assert.equal(entry.getUnixMode(), 0100777);
+
+    });
+
+    it('should also preserve filetype information', function() {
+      entry.setUnixMode(0120755);
+      assert.propertyVal(entry, 'exattr', 2716663840);
+      assert.propertyVal(entry, 'mode', 0755);
+      assert.equal(entry.getUnixMode(), 0120755);
     });
   });
 
