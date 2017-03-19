@@ -4,6 +4,7 @@ var assert = require('chai').assert;
 var commons = require('../lib/compress-commons');
 var ZipArchiveEntry = commons.ZipArchiveEntry;
 var GeneralPurposeBit = require('../lib/archivers/zip/general-purpose-bit');
+var UnixStat = require('../lib/archivers/zip/unix-stat');
 
 var entry;
 // Jan 03 2013 14:26:38 GMT
@@ -294,5 +295,14 @@ describe('ZipArchiveEntry', function() {
       entry.setName('some/directory/');
       assert.ok(entry.isDirectory());
     });
+  });
+
+  describe('#isUnixSymlink', function() {
+      it('should work ...', function() {
+        entry.setUnixMode(UnixStat.LINK_FLAG);
+        assert.ok(entry.isUnixSymlink());
+        entry.setUnixMode(UnixStat.LINK_FLAG | UnixStat.DIR_FLAG);
+        assert.notOk(entry.isUnixSymlink());
+      });
   });
 });
