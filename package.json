@@ -27,13 +27,13 @@
   },
   "dependencies": {
     "buffer-crc32": "^0.2.1",
-    "crc32-stream": "^1.0.0",
+    "crc32-stream": "^2.0.0",
     "normalize-path": "^2.0.0",
     "readable-stream": "^2.0.0"
   },
   "devDependencies": {
     "chai": "^3.4.0",
-    "mocha": "^2.3.3",
+    "mocha": "^3.2.0",
     "rimraf": "^2.4.3",
     "mkdirp": "^0.5.0"
   },
