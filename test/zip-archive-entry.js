@@ -298,7 +298,7 @@ describe('ZipArchiveEntry', function() {
   });
 
   describe('#isUnixSymlink', function() {
-      it('should work ...', function() {
+      it('should verify symlinks can be set', function() {
         entry.setUnixMode(UnixStat.LINK_FLAG);
         assert.ok(entry.isUnixSymlink());
         entry.setUnixMode(UnixStat.LINK_FLAG | UnixStat.DIR_FLAG);
