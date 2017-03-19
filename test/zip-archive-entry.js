@@ -145,6 +145,16 @@ describe('ZipArchiveEntry', function() {
       var exattr = entry.getExternalAttributes() >> 16;
       assert.equal(exattr & 040000, 040000);
     });
+
+    it('should preserve previously set external attributes', function () {
+      entry = new ZipArchiveEntry('directory/');
+      entry.setExternalAttributes(0x88888888);
+
+      entry.setUnixMode(0777);
+      var exattr = entry.getExternalAttributes();
+
+      assert.equal(exattr, 0xC9FF8898);
+    });
   });
 
   describe('#getVersionNeededToExtract', function() {
