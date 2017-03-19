@@ -298,9 +298,10 @@ describe('ZipArchiveEntry', function() {
   });
 
   describe('#isUnixSymlink', function() {
-      it('should verify symlinks can be set', function() {
+      it('should return a boolean if the entry is a symlink', function() {
         entry.setUnixMode(UnixStat.LINK_FLAG);
         assert.ok(entry.isUnixSymlink());
+        
         entry.setUnixMode(UnixStat.LINK_FLAG | UnixStat.DIR_FLAG);
         assert.notOk(entry.isUnixSymlink());
       });
