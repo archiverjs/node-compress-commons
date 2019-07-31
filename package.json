@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "buffer-crc32": "^0.2.13",
-    "crc32-stream": "^2.0.0",
+    "crc32-stream": "^3.0.0",
     "normalize-path": "^3.0.0",
     "readable-stream": "^2.3.6"
   },
