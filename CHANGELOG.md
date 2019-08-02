@@ -1,5 +1,9 @@
 ## Changelog
 
+**2.1.1** — <small>_August 2, 2019_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/2.1.0...2.1.1)
+
+- update crc32-stream to v3.0.1
+
 **2.1.0** — <small>_August 2, 2019_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/2.0.0...2.1.0)
 
 - update crc32-stream to v3.0.0
