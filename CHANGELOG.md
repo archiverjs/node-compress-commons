@@ -1,5 +1,10 @@
 ## Changelog
 
+**3.0.0** - <small>_April 14, 2020_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/2.1.1...3.0.0)
+
+- breaking: slowly catch up with node LTS, remove support for versions under 8.
+- update multiple deps.
+
 **2.1.1** — <small>_August 2, 2019_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/2.1.0...2.1.1)
 
 - update crc32-stream to v3.0.1
