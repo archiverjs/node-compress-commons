@@ -41,8 +41,5 @@
     "compress",
     "commons",
     "archive"
-  ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  }
+  ]
 }
