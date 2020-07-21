@@ -1,5 +1,9 @@
 ## Changelog
 
+**4.0.1** — <small>_July 20, 2020_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/4.0.0...4.0.1)
+
+* Bump crc32-stream from 3.0.1 to 4.0.0 (#43) @dependabot
+
 **4.0.0** — <small>_July 18, 2020_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/3.0.0...4.0.0)
 
 * Bump mocha from 5.2.0 to 8.0.1 (#36) @dependabot
