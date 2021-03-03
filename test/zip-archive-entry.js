@@ -222,8 +222,8 @@ describe('ZipArchiveEntry', function() {
       assert.propertyVal(entry, 'name', 'file.txt');
     });
 
-    it('should allow / at the beginning of path', function() {
-      entry.setName('/file.txt');
+    it('should allow setting prefix of / at the beginning of path', function() {
+      entry.setName('file.txt', '/');
       assert.propertyVal(entry, 'name', '/file.txt');
     });
 
