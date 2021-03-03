@@ -243,7 +243,7 @@ describe('ZipArchiveEntry', function() {
       assert.propertyVal(entry, 'name', 'server/share/');
     });
 
-    it('should clean multiple forward slashes at start of paths', function() {
+    it('should clean multiple forward slashes at beginning of path', function() {
       entry.setName('//forward/file.txt');
       assert.propertyVal(entry, 'name', 'forward/file.txt');
     }):
