@@ -243,6 +243,11 @@ describe('ZipArchiveEntry', function() {
       assert.propertyVal(entry, 'name', 'server/share/');
     });
 
+    it('should clean multiple forward slashes at start of paths', function() {
+      entry.setName('//forward/file.txt');
+      assert.propertyVal(entry, 'name', 'forward/file.txt');
+    }):
+
     it('should set utf8 bit when receiving strings byte count != string length', function() {
       entry.setName('ÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝàáâãäçèéêëìíîïñòóôõöùúûüýÿ.txt');
       assert.ok(entry.getGeneralPurposeBit().usesUTF8ForNames());
