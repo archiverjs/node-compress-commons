@@ -1,6 +1,6 @@
 ## Changelog
 
-**4.2.0** — <small>_March 2, 2021_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/4.0.1...4.1.0)
+**4.1.0** — <small>_March 2, 2021_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/4.0.1...4.1.0)
 
 ## Features
 
