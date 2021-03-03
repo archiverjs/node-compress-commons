@@ -222,6 +222,11 @@ describe('ZipArchiveEntry', function() {
       assert.propertyVal(entry, 'name', 'file.txt');
     });
 
+    it('should allow setting prefix of / at the beginning of path', function() {
+      entry.setName('file.txt', true);
+      assert.propertyVal(entry, 'name', '/file.txt');
+    });
+
     it('should allow ./ at the beginning of path', function() {
       entry.setName('./file.txt');
       assert.propertyVal(entry, 'name', './file.txt');
@@ -236,6 +241,11 @@ describe('ZipArchiveEntry', function() {
 
       entry.setName('\\\\server\\share\\');
       assert.propertyVal(entry, 'name', 'server/share/');
+    });
+
+    it('should clean multiple forward slashes at beginning of path', function() {
+      entry.setName('//forward/file.txt');
+      assert.propertyVal(entry, 'name', 'forward/file.txt');
     });
 
     it('should set utf8 bit when receiving strings byte count != string length', function() {
