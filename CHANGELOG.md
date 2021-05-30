@@ -1,12 +1,21 @@
 ## Changelog
 
+**4.1.1** — <small>_May 30th, 2021_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/4.1.0...4.1.1)
+
+### Maintenance
+- Bump mocha from 8.2.1 to 8.4.0 (#70)
+- Bump crc32-stream from 4.0.1 to 4.0.2 (#59)
+- Bump y18n from 4.0.0 to 4.0.1 (#69)
+- Bump chai from 4.2.0 to 4.3.4 (#67)
+- Bump actions/setup-node from 2.1.4 to 2.1.5 (#71)
+
 **4.1.0** — <small>_March 2, 2021_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/4.0.1...4.1.0)
 
-## Features
+### Features
 
 - Allow prepending forward slash in entry name (#63)
 
-## Maintenance
+### Maintenance
 
 - Bump actions/setup-node from v2.1.2 to v2.1.4 (#58)
 
