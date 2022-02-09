@@ -84,6 +84,7 @@ describe('ZipArchiveOutputStream', function() {
       var entry2 = new ZipArchiveEntry('buffer.txt');
       var entry3 = new ZipArchiveEntry('stream.txt');
       var entry4 = new ZipArchiveEntry('stream-store.png');
+      entry2.setMethod(0);
       entry4.setMethod(0);
 
       testStream.on('close', function() {
