@@ -1,6 +1,6 @@
 ## Changelog
 
-**5.0.0-wip** — <small>_September X, 2023_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/4.1.2...5.0.0)
+**5.0.0** — <small>_September 2, 2023_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/4.1.2...5.0.0)
 
 
 **4.1.2** — <small>_September 2, 2023_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/4.1.1...4.1.2)
