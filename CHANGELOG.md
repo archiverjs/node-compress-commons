@@ -1,5 +1,7 @@
 ## Changelog
 
+**4.1.2** — <small>_September 2, 2023_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/4.1.1...4.1.2)
+
 **4.1.1** — <small>_May 30th, 2021_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/4.1.0...4.1.1)
 
 ### Maintenance
