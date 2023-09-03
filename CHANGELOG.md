@@ -1,5 +1,7 @@
 ## Changelog
 
+**5.0.1** — <small>_September 3, 2023_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/5.0.0...5.0.1)
+
 **5.0.0** — <small>_September 2, 2023_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/4.1.2...5.0.0)
 
 
