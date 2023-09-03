@@ -85,6 +85,8 @@ describe('ZipArchiveOutputStream', function() {
       var entry3 = new ZipArchiveEntry('stream.txt');
       var entry4 = new ZipArchiveEntry('stream-store.png');
       entry4.setMethod(0);
+      var entry5 = new ZipArchiveEntry('buffer-store.txt')
+      entry5.setMethod(0)
 
       testStream.on('close', function() {
         done();
@@ -100,7 +102,10 @@ describe('ZipArchiveOutputStream', function() {
             if (err) throw err;
             archive.entry(entry4, fs.createReadStream('test/fixtures/image.png'), function(err) {
               if (err) throw err;
-              archive.finish();
+              archive.entry(entry5, testBuffer, function(err) {
+                if (err) throw err;
+                archive.finish();
+              });
             });
           });
         });
