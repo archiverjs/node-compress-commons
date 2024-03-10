@@ -3,6 +3,7 @@ var fs = require('fs');
 var stream = require('stream');
 var assert = require('chai').assert;
 var mkdir = require('mkdirp');
+var Readable = require('readable-stream').Readable;
 
 var helpers = require('./helpers');
 var WriteHashStream = helpers.WriteHashStream;
@@ -46,6 +47,20 @@ describe('ZipArchiveOutputStream', function() {
       archive.pipe(testStream);
 
       archive.entry(entry, fs.createReadStream('test/fixtures/test.txt')).finish();
+    });
+
+    it('should append Stream-like sources', function(done) {
+      var archive = new ZipArchiveOutputStream();
+      var testStream = new WriteHashStream('tmp/zip-stream-like.zip');
+      var entry = new ZipArchiveEntry('stream-like.txt');
+
+      testStream.on('close', function() {
+        done();
+      });
+
+      archive.pipe(testStream);
+
+      archive.entry(entry, Readable.from(['test'])).finish();
     });
 
     it('should stop streaming on Stream error', function(done) {
