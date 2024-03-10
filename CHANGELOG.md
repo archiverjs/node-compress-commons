@@ -1,5 +1,7 @@
 ## Changelog
 
+**6.0.2** — <small>_March 9, 2024_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/6.0.1...6.0.2)
+
 **6.0.1** — <small>_February 29, 2024_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/6.0.0...6.0.1)
 
 **6.0.0** — <small>_February 26, 2024_</small> — [Diff](https://github.com/archiverjs/node-compress-commons/compare/5.0.2...6.0.0)
