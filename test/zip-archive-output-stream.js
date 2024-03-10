@@ -60,7 +60,7 @@ describe('ZipArchiveOutputStream', function() {
 
       archive.pipe(testStream);
 
-      archive.entry(entry, new Readable()).finish();
+      archive.entry(entry, Readable.from(['test'])).finish();
     });
 
     it('should stop streaming on Stream error', function(done) {
