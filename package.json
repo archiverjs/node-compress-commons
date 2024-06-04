@@ -35,7 +35,7 @@
   "devDependencies": {
     "chai": "4.4.1",
     "mkdirp": "3.0.1",
-    "mocha": "10.3.0",
+    "mocha": "10.4.0",
     "rimraf": "5.0.7"
   },
   "keywords": [
