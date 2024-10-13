@@ -15,20 +15,21 @@
     "url": "https://github.com/archiverjs/node-compress-commons/issues"
   },
   "license": "MIT",
-  "main": "lib/compress-commons.js",
+  "type": "module",
+  "exports": "./lib/compress-commons.js",
   "files": [
     "lib"
   ],
   "engines": {
-    "node": ">= 14"
+    "node": ">=18"
   },
   "scripts": {
     "test": "mocha --reporter dot"
   },
   "dependencies": {
     "crc-32": "^1.2.0",
-    "crc32-stream": "^6.0.0",
-    "is-stream": "^2.0.1",
+    "crc32-stream": "^7.0.0",
+    "is-stream": "^3.0.0",
     "normalize-path": "^3.0.0",
     "readable-stream": "^4.0.0"
   },
@@ -36,6 +37,7 @@
     "chai": "4.5.0",
     "mkdirp": "3.0.1",
     "mocha": "10.7.3",
+    "prettier": "3.3.3",
     "rimraf": "5.0.10"
   },
   "keywords": [

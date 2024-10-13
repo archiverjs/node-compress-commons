@@ -1,18 +1,8 @@
-/*global before,describe,it */
-var fs = require('fs');
-var assert = require('chai').assert;
-var mkdir = require('mkdirp');
+import fs from "fs";
+import { assert } from "chai";
+import { binaryBuffer } from "./helpers/index.js";
 
-var helpers = require('./helpers');
-
-var commons = require('../lib/compress-commons');
-
-var testBuffer = helpers.binaryBuffer(1024 * 16);
-
-describe('ArchiveOutputStream', function() {
-
-  describe('#entry', function() {
-
-  });
-
+var testBuffer = binaryBuffer(1024 * 16);
+describe("ArchiveOutputStream", function () {
+  describe("#entry", function () {});
 });
