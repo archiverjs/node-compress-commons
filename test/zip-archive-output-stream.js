@@ -1,7 +1,7 @@
 import { createReadStream } from "fs";
-import { Stream } from "stream";
+import { Stream, Transform } from "stream";
 import { assert } from "chai";
-import mkdir from "mkdirp";
+import { mkdirp } from "mkdirp";
 import { Readable } from "readable-stream";
 import { WriteHashStream, binaryBuffer } from "./helpers/index.js";
 import {
@@ -14,7 +14,7 @@ var testDate = new Date("Jan 03 2013 14:26:38 GMT");
 
 describe("ZipArchiveOutputStream", function () {
   before(function () {
-    mkdir.sync("tmp");
+    mkdirp.sync("tmp");
   });
   describe("#entry", function () {
     it("should append Buffer sources", function (done) {
@@ -35,9 +35,7 @@ describe("ZipArchiveOutputStream", function () {
         done();
       });
       archive.pipe(testStream);
-      archive
-        .entry(entry, fs.createReadStream("test/fixtures/test.txt"))
-        .finish();
+      archive.entry(entry, createReadStream("test/fixtures/test.txt")).finish();
     });
     it("should append Stream-like sources", function (done) {
       var archive = new ZipArchiveOutputStream();
@@ -61,7 +59,7 @@ describe("ZipArchiveOutputStream", function () {
         done();
       });
       archive.pipe(testStream);
-      var file = new stream.Transform();
+      var file = new Transform();
       archive.entry(entry, file, function (err) {
         callbackCalls += 1;
         callbackError = err;
@@ -91,12 +89,12 @@ describe("ZipArchiveOutputStream", function () {
           if (err) throw err;
           archive.entry(
             entry3,
-            fs.createReadStream("test/fixtures/test.txt"),
+            createReadStream("test/fixtures/test.txt"),
             function (err) {
               if (err) throw err;
               archive.entry(
                 entry4,
-                fs.createReadStream("test/fixtures/image.png"),
+                createReadStream("test/fixtures/image.png"),
                 function (err) {
                   if (err) throw err;
                   archive.entry(entry5, testBuffer, function (err) {
