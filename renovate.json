@@ -1,10 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    "schedule:daily",
-    ":pinDevDependencies"
-  ],
+  "extends": ["config:base", "schedule:daily", ":pinDevDependencies"],
   "timezone": "America/Chicago",
   "labels": ["dependencies"],
   "packageRules": [
