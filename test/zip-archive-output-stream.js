@@ -120,5 +120,84 @@ describe("ZipArchiveOutputStream", function () {
       archive.pipe(testStream);
       archive.entry(entry, createReadStream("test/fixtures/test.txt")).finish();
     });
+    it("should honor backpressure while writing the central directory", function (done) {
+      this.timeout(10000);
+      var entryCount = 2000;
+      var archive = new BackpressureZipArchiveOutputStream();
+      var chunks = [];
+      archive.on("data", function (chunk) {
+        chunks.push(chunk);
+      });
+      archive.on("end", function () {
+        var output = Buffer.concat(chunks);
+        var names = getCentralDirectoryNames(output);
+        assert.equal(archive.centralDirectoryWrites, entryCount);
+        assert.equal(archive.drainEvents, entryCount);
+        assert.lengthOf(names, entryCount);
+        assert.equal(names[0], "entry-0.txt");
+        assert.equal(
+          names[entryCount - 1],
+          "entry-" + (entryCount - 1) + ".txt",
+        );
+        done();
+      });
+      for (var i = 0; i < entryCount; i++) {
+        var entry = new ZipArchiveEntry("entry-" + i + ".txt");
+        archive.entry(entry, Buffer.alloc(0));
+      }
+      archive.finish();
+    });
   });
 });
+
+class BackpressureZipArchiveOutputStream extends ZipArchiveOutputStream {
+  constructor() {
+    super();
+    this.centralDirectoryWrites = 0;
+    this.drainEvents = 0;
+    this.waitingForDrain = false;
+  }
+
+  write(chunk, callback) {
+    var isCentralDirectoryHeader =
+      Buffer.isBuffer(chunk) &&
+      chunk.length >= 4 &&
+      chunk.readUInt32LE(0) === 0x02014b50;
+    if (!isCentralDirectoryHeader) {
+      return super.write(chunk, callback);
+    }
+    assert.isFalse(this.waitingForDrain);
+    super.write(chunk, callback);
+    this.centralDirectoryWrites += 1;
+    this.waitingForDrain = true;
+    setImmediate(
+      function () {
+        this.waitingForDrain = false;
+        this.drainEvents += 1;
+        this.emit("drain");
+      }.bind(this),
+    );
+    return false;
+  }
+}
+
+function getCentralDirectoryNames(output) {
+  var endSignature = Buffer.from([0x50, 0x4b, 0x05, 0x06]);
+  var endOffset = output.lastIndexOf(endSignature);
+  assert.isAtLeast(endOffset, 0);
+  var entryCount = output.readUInt16LE(endOffset + 10);
+  var centralLength = output.readUInt32LE(endOffset + 12);
+  var centralOffset = output.readUInt32LE(endOffset + 16);
+  var offset = centralOffset;
+  var names = [];
+  for (var i = 0; i < entryCount; i++) {
+    assert.equal(output.readUInt32LE(offset), 0x02014b50);
+    var nameLength = output.readUInt16LE(offset + 28);
+    var extraLength = output.readUInt16LE(offset + 30);
+    var commentLength = output.readUInt16LE(offset + 32);
+    names.push(output.toString("utf8", offset + 46, offset + 46 + nameLength));
+    offset += 46 + nameLength + extraLength + commentLength;
+  }
+  assert.equal(offset, centralOffset + centralLength);
+  return names;
+}
